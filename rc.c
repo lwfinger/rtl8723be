@@ -290,7 +290,9 @@ static void rtl_rate_free_sta(void *rtlpriv,
 }
 
 static struct rate_control_ops rtl_rate_ops = {
+#if (LINUX_VERSION_CODE <= KERNEL_VERSION(3,13,0))
 	.module = NULL,
+#endif
 	.name = "rtl_rc",
 	.alloc = rtl_rate_alloc,
 	.free = rtl_rate_free,

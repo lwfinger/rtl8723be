@@ -1027,6 +1027,11 @@ int rtl8723be_hw_init(struct ieee80211_hw *hw)
 	bool rtstatus = true;
 	int err;
 	u8 tmp_u1b;
+	unsigned long flags;
+
+	/* reenable interrupts to not interfere with other devices */
+	local_save_flags(flags);
+	local_irq_enable();
 
 	rtlpriv->rtlhal.being_init_adapter = true;
 	rtlpriv->intf_ops->disable_aspm(hw);
@@ -1034,7 +1039,7 @@ int rtl8723be_hw_init(struct ieee80211_hw *hw)
 	if (rtstatus != true) {
 		RT_TRACE(COMP_ERR, DBG_EMERG, ("Init MAC failed\n"));
 		err = 1;
-		return err;
+		goto exit;
 	}
 
 	tmp_u1b = rtl_read_byte(rtlpriv, REG_SYS_CFG);
@@ -1047,7 +1052,7 @@ int rtl8723be_hw_init(struct ieee80211_hw *hw)
 			 ("Failed to download FW. Init HW without FW now..\n"));
 		err = 1;
 		rtlhal->bfw_ready = false;
-		return err;
+		goto exit;
 	} else {
 		rtlhal->bfw_ready = true;
 	}
@@ -1133,7 +1138,8 @@ int rtl8723be_hw_init(struct ieee80211_hw *hw)
 	}
 
 	rtl8723be_dm_init(hw);
-
+exit:
+	local_irq_restore(flags);
 	rtlpriv->rtlhal.being_init_adapter = false;
 	return err;
 }

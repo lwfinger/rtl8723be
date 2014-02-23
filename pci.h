@@ -39,7 +39,7 @@
 #define RTL_PCI_RX_CMD_QUEUE			1
 #define RTL_PCI_MAX_RX_QUEUE			2
 
-#define RTL_PCI_MAX_RX_COUNT			512//64
+#define RTL_PCI_MAX_RX_COUNT			64
 #define RTL_PCI_MAX_TX_QUEUE_COUNT		9
 
 #define RT_TXDESC_NUM				128
