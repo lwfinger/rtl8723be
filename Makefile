@@ -26,10 +26,10 @@ rtlwifi-objs += $(PCI_MAIN_OBJS)
 all: 
 	$(MAKE) -C $(KSRC) M=$(PWD) modules
 	@cp $(SYMBOL_FILE) btcoexist/
-	@make -C btcoexist/
+	@+make -C btcoexist/
 	@cp $(SYMBOL_FILE) rtl8723be/
 	@cp btcoexist/$(SYMBOL_FILE) rtl8723be/
-	@make -C rtl8723be/
+	@+make -C rtl8723be/
 install: all
 	find /lib/modules/$(shell uname -r) -name "btcoexist_*.ko" -exec rm {} \;
 	find /lib/modules/$(shell uname -r) -name "r8723be_*.ko" -exec rm {} \;
