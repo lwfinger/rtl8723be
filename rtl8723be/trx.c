@@ -614,7 +614,7 @@ bool rtl8723be_rx_query_desc(struct ieee80211_hw *hw,
 				return false;
 		}
 		
-#if (LINUX_VERSION_CODE <= KERNEL_VERSION(3,13,0))
+#if (LINUX_VERSION_CODE <= KERNEL_VERSION(3,14,0))
 		if ((ieee80211_is_robust_mgmt_frame(hdr)) &&
 		    (ieee80211_has_protected(hdr->frame_control)))
 #else
