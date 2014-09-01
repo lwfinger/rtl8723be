@@ -618,7 +618,7 @@ bool rtl8723be_rx_query_desc(struct ieee80211_hw *hw,
 		if ((ieee80211_is_robust_mgmt_frame(hdr)) &&
 		    (ieee80211_has_protected(hdr->frame_control)))
 #else
-		if ((_ieee80211_is_robust_mgmt_frame(hdr)) &&
+		if ((ieee80211_is_robust_mgmt_frame(hdr)) &&
 		    (ieee80211_has_protected(hdr->frame_control)))
 #endif
 			rx_status->flag &= ~RX_FLAG_DECRYPTED;
