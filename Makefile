@@ -36,7 +36,7 @@ install: all
 	@rm -fr $(FIRMWAREDIR)/`uname -r`/rtlwifi
 
 	$(shell rm -fr $(MODDESTDIR))
-	$(shell mkdir $(MODDESTDIR))
+	$(shell mkdir -p $(MODDESTDIR))
 	$(shell mkdir $(MODDESTDIR)/btcoexist)
 	$(shell mkdir $(MODDESTDIR)/rtl8723be)
 	@install -p -m 644 rtlwifi.ko $(MODDESTDIR)	
