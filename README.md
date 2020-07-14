@@ -1,2 +1,2 @@
 # rtl8723be
-This repo is **obsolete**. Use [lwfinger/rtlwifi_new](https://github.com/lwfinger/rtlwifi_new) instead.
+This repo is **obsolete**. Use the driver in the kernel, or the one in the Backports Project.
